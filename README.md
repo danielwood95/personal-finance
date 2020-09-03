@@ -1,7 +1,7 @@
 # Personal Finance Models
 
 ## What is this repository for?
-Does it really matter if you start saving this year? 
+Does it really matter if I start saving this year? 
 
 It's easy to underestimate the power of saving money early and consistently. It's also overwhelming choosing how to invest your money. I created these personal finance models to understand the different outcomes depending on when, how, and where I put my money. 
 
