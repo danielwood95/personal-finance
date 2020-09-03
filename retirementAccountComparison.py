@@ -8,7 +8,7 @@ brokerageTotal     = 0   # After-tax brokerage account (gains taxed at long-term
 brokeragePrincipal = 0   # After-tax brokerage principal (total brokerage contributions, no gains)
 
 # Contributions
-annualContribution  = 19500.0                    # Before tax
+annualContribution  = 19500.0                    # Before tax (max contribution allowed is 19500 in 2020)
 monthlyContribution = annualContribution / 12.0  # Before tax
 yearsSaving         = 40                         # 65 - current age
 
