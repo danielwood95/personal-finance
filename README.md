@@ -15,3 +15,7 @@ It's easy to underestimate the power of saving money early and consistently. It'
   * 401k 
   * Roth 401k
   * Brokerage account
+  
+## Python version 
+Developed using Python 2.7.16
+
