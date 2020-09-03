@@ -1,6 +1,6 @@
 import math
 
-monthlyContribution = 1000   # How much you save each month
+monthlyContribution = 1000  # How much you save each month
 annualInterestRate = 7      # Annual growth rate
 yearsSaving = 40            # Retirement age - current age
 annualSavingsIncrease = 2   # Annual rate of increase in monthly savings

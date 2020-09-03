@@ -1,53 +1,37 @@
 import math
-import numpy as np
 import random 
 import matplotlib.pyplot as plt
 
 # Define function to calculate lifetime savings with variable annual interest
 def lifetimeSavings():
-	monthlySavings = 6000
-	yearsSaving = 40
-	annualSavingsIncrease = 2
-	savings = 200000
-	avgAnnualInterestRate = 9
-	variaceInInterest = 2
-	for year in range(yearsSaving):
-		annualInterestRate = avgAnnualInterestRate + random.uniform(variaceInInterest * -1,variaceInInterest)
-		monthlyCompound = math.pow((1 + annualInterestRate/100.0),1/12.0)
-		for months in range(12):
-			savings = monthlySavings + (savings * monthlyCompound)
-		monthlySavings = monthlySavings * (1 + annualSavingsIncrease/100.0)
-	return savings
+	monthlyContribution   = 1000    # How much you save each month
+	yearsSaving           = 40      # Retirement age - current age
+	annualSavingsIncrease = 2       # Annual rate of increase in monthly savings
+	initialSavings        = 1000    # How much money you start out with
+	avgAnnualGrowthRate   = 8       # From 1957 - 2020 AAGR was 8% including inflation
+	variaceInGrowthRate   = 3       # Variance in AAGR allowed (e.g. +/- 3%)
+	totalSavings          = initialSavings
 
-# Run 10,000 trials
+	# Simulate each year of investing
+	for year in range(yearsSaving):
+		# Each year calculate growth rate factoring in variance in growth rate
+		annualGrowthRate = avgAnnualGrowthRate + random.uniform(variaceInGrowthRate * -1,variaceInGrowthRate)
+		monthlyCompound    = math.pow((1 + annualGrowthRate/100.0),1/12.0)
+
+		# Each month add monthly contribution
+		for months in range(12):
+			totalSavings = monthlyContribution + (totalSavings * monthlyCompound)
+
+		# Every year, update monthly contribution ammount to include annual savings increase
+		monthlyContribution = monthlyContribution * (1 + annualSavingsIncrease/100.0)
+
+	# total savings for retirement
+	return totalSavings
+
+# Run 10,000 simulations to show distribution of outcomes depending on annual growth rate
 trials = []
 for x in xrange(10000):
 	trials.append(lifetimeSavings())
 num_bins = 100
 n, bins, patches = plt.hist(trials, num_bins, facecolor='blue', alpha=0.5)
 plt.show()
-
-
-# monthlySavings = 6000
-# yearsSaving = 40
-# annualSavingsIncrease = 2
-# savings = 200000
-# avgAnnualInterestRate = 9
-# variaceInInterest = 3
-
-# print "Total if you invest:"
-# print '{0:>10} {1:>10} {2:>10}'.format("YEAR", "TOTAL", "MONTHLY")
-# print("------------------------------------------")
-# for year in range(yearsSaving):
-# 	annualInterestRate = 7 + random.uniform(variaceInInterest * -1,variaceInInterest)
-# 	monthlyCompound = math.pow((1 + annualInterestRate/100.0),1/12.0)
-# 	for months in range(12):
-# 		savings = monthlySavings + (savings * monthlyCompound)
-# 	print '{0:>10} {1:>10} {2:>10}'.format(year, int(savings), int(monthlySavings))
-# 	monthlySavings = monthlySavings * (1 + annualSavingsIncrease/100.0)
-
-# print("------------------------------------------\n")
-
-# monthlySavings = 6000
-# noInterest = yearsSaving * 12 * monthlySavings
-# print "Total if you don't invest: ", noInterest
